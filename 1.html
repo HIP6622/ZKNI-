@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>שמחצל הציפלון</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;700&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --ink: #1C1A18;
+    --warm-mid: #8C7B6B;
+    --accent: #C07A3A;
+    --divider: #E4DDD4;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    line-height: 1.85;
+    font-size: 17px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    text-align: center;
+    padding: 72px 24px 48px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Heebo', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 6vw, 3.6rem);
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--warm-mid);
+    font-style: italic;
+  }
+
+  /* ─── SPOON DIVIDER ─── */
+  .spoon {
+    text-align: center;
+    padding: 28px 0 0;
+    font-size: 28px;
+    opacity: 0.55;
+  }
+
+  /* ─── SCENE BLOCKS ─── */
+  .story {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .scene {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  .scene:last-child { border-bottom: none; }
+
+  .scene-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .scene p {
+    margin-bottom: 1.1em;
+    color: #2E2B27;
+  }
+  .scene p:last-child { margin-bottom: 0; }
+
+  strong { font-weight: 500; color: var(--ink); }
+
+  /* ─── IMAGE CARDS ─── */
+  .img-card {
+    margin: 36px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+  }
+
+  .img-card img {
+    width: 100%;
+    display: block;
+    transition: transform 0.45s ease;
+  }
+  .img-card:hover img { transform: scale(1.02); }
+
+  .img-caption {
+    background: #fff;
+    padding: 12px 18px;
+    font-size: 13px;
+    color: var(--warm-mid);
+    font-style: italic;
+    border-top: 1px solid var(--divider);
+  }
+
+  /* ─── QUOTE CLOSER ─── */
+  .closing-quote {
+    margin: 48px 0 0;
+    padding: 32px 28px;
+    border-right: 3px solid var(--accent);
+    background: #fff;
+    border-radius: 0 10px 10px 0;
+  }
+
+  .closing-quote p {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 0 !important;
+  }
+
+  .closing-quote cite {
+    display: block;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--warm-mid);
+    font-style: normal;
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 32px 24px 48px;
+    font-size: 13px;
+    color: var(--warm-mid);
+    border-top: 1px solid var(--divider);
+  }
+  footer span { font-size: 20px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="hero-eyebrow">סיפורי הישיבה · פרק א׳</p>
+  <h1>שמחצל הציפלון</h1>
+  <p class="hero-sub">לא כל גיבור נולד עם חרב ביד.<br>לשמחצל היתה כף.</p>
+  <div class="spoon">🥄</div>
+</header>
+
+<main class="story">
+
+  <!-- Scene 1: The Dining Room -->
+  <section class="scene">
+    <p class="scene-label">חדר האוכל</p>
+    <p>
+      חדר האוכל של הישיבה לא בו אוכל... כמעט. ריחות שלא ניתן לתאר בשפה האנושית
+      (רק בשפה הצ׳יבצ׳רית) נישאו לקראת הבאים מרחוק. הטבח שילב בתוכו בחכמה רבה שמן ישן,
+      מרק ממקור בלתי מזוהה, ומשהו שאולי בעברו הרחוק היה טשולנט.
+    </p>
+
+    <div class="img-card">
+      <img src="https://images.nightcafe.studio/jobs/RR3qS6MDmMFYMepxxRCT/RR3qS6MDmMFYMepxxRCT-xXZ__.jpg?tr=w-1600,c-at_max"
+           alt="שמחצל אוכל מבלי להסתכל על האוכל" loading="lazy">
+      <p class="img-caption">שמחצל מתרגל את הטכניקה — עיניים קדימה, ידיים עובדות</p>
+    </div>
+
+    <p>
+      שמחצל הציפלון ידע כבר בשנתו הראשונה שישנם שני סוגי בחורים בישיבה: אלה שמסתכלים
+      במה שהם אוכלים, ואלה שמצליחים לאכול. הוא בחר להיות מהסוג השני.
+    </p>
+    <p>
+      הטכניקה הושלמה לאורך חודשים של אימון קשה — עיניים נשואות תמיד קדימה, אל עבר קיר האוכל
+      המלוכלך, עם תמונת הרב הגדול, ידיים עובדות באוטומט מוחלטת. כף עולה, הפה נפתח, כף יורדת —
+      מבלי שמוחו של שמחצל יהיה שותף למהלך הזה. הוא גאה בזה. זו היתה מיומנות.
+    </p>
+    <p><strong>הצרה התחילה היום!</strong></p>
+  </section>
+
+  <!-- Scene 2: The Coffee -->
+  <section class="scene">
+    <p class="scene-label">הקפה</p>
+    <p>
+      זה קרה בשבוע הבחינות. שמחצל ישב שקוע בעיון ב״חידושי הגרש״ש״ כשצלצלה לפתע זעקת שמחה
+      ממרחק: ״שמחצל! הבאתי לך קפה!״
+    </p>
+    <p>
+      זה היה זלמן (חבר של קאפל). זלמן שהיה ידוע כמי שאוהב אנשים בכל ליבו, ושכמעט מעולם —
+      אבל מעולם — לא עשה דבר מה שהתכוון לעשות.
+    </p>
+
+    <div class="img-card">
+      <img src="https://images.nightcafe.studio/jobs/PshXT6hJKqNNgr93iNsD/PshXT6hJKqNNgr93iNsD-VOF3B.jpg?tr=w-1600,c-at_max"
+           alt="זלמן מביא קפה לשמחצל" loading="lazy">
+      <p class="img-caption">זלמן הגיע עם כוס הקפה הרותחת וחיוך של מיליון דולר</p>
+    </div>
+
+    <p>
+      שמחצל הרים עיניו מהספר. קפה. בשבוע הבחינות לישיבה גדולה.
+      ״זלמן,״ אמר שמחצל בקול רגש, ״אתה אדם ענק.״
+    </p>
+    <p>
+      ״בקטנה,״ השיב זלמן, ונשאר לעמוד שם בחיוך, ממתין.
+    </p>
+    <p>
+      שמחצל הבין שמצופה ממנו לשתות עכשיו, בפני הנותן, כמחווה של הכרת תודה. הוא לקח לגימה.
+    </p>
+    <p>
+      מה שקרה לאחר מכן הוא תעלומה שכל הצ׳יבצערס עדיין לא ידעו. הגוף של שמחצל, שהיה מיומן
+      מאוד בדיכוי תגובות לא רצויות, פרש כשל חריג וחד. הפה קיבל אות ברור שמשהו ממש לא בסדר —
+      <strong>מלח</strong>. כוס שלמה של מלח. אבל המוח, שהיה עייף מאוד מהגרש״ש, שלח בחזרה הוראה ברורה:
+      אין חולשה בפני זלמן.
+    </p>
+    <p>
+      שמחצל הוריד את הכוס. בשלוות נפש. בנחת. ״מצוין,״ אמר.
+    </p>
+    <p>
+      זלמן התרחב מגאווה. שמחצל לקח עוד לגימה. בפנים, הקיבה שלחה עצומה רשמית.
+    </p>
+  </section>
+
+  <!-- Closing wisdom -->
+  <section class="scene">
+    <p class="scene-label">הכלל שגילה שמחצל</p>
+    <p>
+      שנים לאחר מכן, כשנשאל שמחצל על חדר האוכל, הוא חייך חיוך חכם:
+    </p>
+    <div class="closing-quote">
+      <p>״בישיבה למדתי דבר אחד שלא כתוב בשום מסכת: אל תסתכל למה שנכנס לפה שלך. תסתכל למי שמסתכל עליך.״</p>
+      <cite>— שמחצל הציפלון</cite>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>🥄</span><br><br>
+  סיפורי הישיבה · מסורת צ׳יבצ׳ר · כל הזכויות שמורות לקיבה
+</footer>
+
+</body>
+</html>
