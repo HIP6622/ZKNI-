@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>גלריה</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;700&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #FAF7F2;
+  --ink: #1C1A18;
+  --warm-mid: #8C7B6B;
+  --accent: #C07A3A;
+  --divider: #E4DDD4;
+  --bubble: #FFFFFF;
+  --bubble-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  font-size: 16px;
+  overflow-y: auto;
+}
+
+.gallery-header {
+  text-align: center;
+  padding: 48px 24px 36px;
+  border-bottom: 1px solid var(--divider);
+}
+.gallery-header .eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.gallery-header h1 {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.gallery-header p {
+  font-size: 14px;
+  color: var(--warm-mid);
+  font-style: italic;
+}
+
+/* Chat-style feed */
+.feed {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card {
+  background: var(--bubble);
+  border-radius: 12px;
+  box-shadow: var(--bubble-shadow);
+  border: 1px solid var(--divider);
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 14px 18px 10px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  border-bottom: 1px solid var(--divider);
+}
+.card-name {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.card-date {
+  font-size: 12px;
+  color: var(--warm-mid);
+  margin-right: auto;
+}
+.card-caption {
+  padding: 10px 18px;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.card-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  background: var(--divider);
+}
+
+/* Emoji reactions */
+.reactions {
+  padding: 10px 18px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.reaction-btn {
+  background: var(--cream);
+  border: 1.5px solid var(--divider);
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: border-color 0.15s, background 0.15s;
+  font-family: sans-serif;
+  line-height: 1;
+}
+.reaction-btn:hover {
+  border-color: var(--accent);
+  background: #FFF8F2;
+}
+.reaction-btn.active {
+  border-color: var(--accent);
+  background: #FFF3E6;
+}
+.reaction-btn .count {
+  font-family: 'Heebo', sans-serif;
+  font-size: 13px;
+  color: var(--warm-mid);
+  font-weight: 500;
+}
+
+/* Add emoji picker */
+.add-reaction {
+  background: transparent;
+  border: 1.5px dashed var(--divider);
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  color: var(--warm-mid);
+  transition: border-color 0.15s, color 0.15s;
+  font-family: sans-serif;
+  line-height: 1;
+}
+.add-reaction:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Emoji picker popup */
+.picker-wrap {
+  position: relative;
+  display: inline-block;
+}
+.emoji-picker {
+  display: none;
+  position: absolute;
+  bottom: 36px;
+  right: 0;
+  background: white;
+  border: 1px solid var(--divider);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  padding: 10px;
+  z-index: 100;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 220px;
+}
+.emoji-picker.open {
+  display: flex;
+}
+.emoji-opt {
+  font-size: 22px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background 0.1s;
+  line-height: 1;
+  font-family: sans-serif;
+}
+.emoji-opt:hover {
+  background: var(--cream);
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--warm-mid);
+  font-style: italic;
+}
+
+footer {
+  text-align: center;
+  padding: 28px 24px 40px;
+  font-size: 13px;
+  color: var(--warm-mid);
+  border-top: 1px solid var(--divider);
+}
+</style>
+</head>
+<body>
+
+<header class="gallery-header">
+  <p class="eyebrow">קאפל, זלמן ושמחצל</p>
+  <h1>רגעים מהחיים</h1>
+  <p>תמונות בכל מיני מצבים וזמנים</p>
+</header>
+
+<main class="feed" id="feed">
+  <div class="loading">טוען תמונות...</div>
+</main>
+
+<footer>
+  סיפורי הישיבה · כל הזכויות שמורות לקיבה
+</footer>
+
+<script>
+// Available emojis for reactions
+const EMOJIS = ['❤️','😂','🙏','😮','🔥','👏','😭','✡️','🎉','😄','👀','💯'];
+// Max 8 emojis per photo
+const MAX_EMOJIS = 8;
+
+// Reactions are stored in-memory (per session)
+// Format: { [photoId]: { [emoji]: count } }
+const reactionsData = {};
+// Track user's own reactions: { [photoId]: Set<emoji> }
+const myReactions = {};
+
+function getReactions(id) {
+  return reactionsData[id] || {};
+}
+
+function toggleReaction(id, emoji, cardEl) {
+  if (!reactionsData[id]) reactionsData[id] = {};
+  if (!myReactions[id]) myReactions[id] = new Set();
+
+  const mine = myReactions[id];
+
+  if (mine.has(emoji)) {
+    mine.delete(emoji);
+    reactionsData[id][emoji] = Math.max(0, (reactionsData[id][emoji] || 1) - 1);
+    if (reactionsData[id][emoji] === 0) delete reactionsData[id][emoji];
+  } else {
+    // Check if adding a new emoji type would exceed MAX_EMOJIS
+    const existing = Object.keys(reactionsData[id]);
+    if (!existing.includes(emoji) && existing.length >= MAX_EMOJIS) return;
+    reactionsData[id][emoji] = (reactionsData[id][emoji] || 0) + 1;
+    mine.add(emoji);
+  }
+  renderReactions(id, cardEl);
+}
+
+function addNewEmoji(id, emoji, cardEl) {
+  if (!reactionsData[id]) reactionsData[id] = {};
+  if (!myReactions[id]) myReactions[id] = new Set();
+
+  const existing = Object.keys(reactionsData[id]);
+  if (!existing.includes(emoji) && existing.length >= MAX_EMOJIS) return;
+
+  reactionsData[id][emoji] = (reactionsData[id][emoji] || 0) + 1;
+  myReactions[id].add(emoji);
+  renderReactions(id, cardEl);
+}
+
+function renderReactions(id, cardEl) {
+  const wrap = cardEl.querySelector('.reactions');
+  const mine = myReactions[id] || new Set();
+  const counts = reactionsData[id] || {};
+  const existing = Object.keys(counts);
+
+  wrap.innerHTML = '';
+
+  existing.forEach(emoji => {
+    const btn = document.createElement('button');
+    btn.className = 'reaction-btn' + (mine.has(emoji) ? ' active' : '');
+    btn.innerHTML = `${emoji} <span class="count">${counts[emoji]}</span>`;
+    btn.onclick = () => toggleReaction(id, emoji, cardEl);
+    wrap.appendChild(btn);
+  });
+
+  // Add reaction button (only if under limit)
+  if (existing.length < MAX_EMOJIS) {
+    const pickerWrap = document.createElement('div');
+    pickerWrap.className = 'picker-wrap';
+
+    const addBtn = document.createElement('button');
+    addBtn.className = 'add-reaction';
+    addBtn.textContent = '＋';
+    addBtn.title = 'הוסף תגובה';
+
+    const picker = document.createElement('div');
+    picker.className = 'emoji-picker';
+
+    EMOJIS.forEach(e => {
+      const opt = document.createElement('span');
+      opt.className = 'emoji-opt';
+      opt.textContent = e;
+      opt.onclick = (ev) => {
+        ev.stopPropagation();
+        picker.classList.remove('open');
+        addNewEmoji(id, e, cardEl);
+      };
+      picker.appendChild(opt);
+    });
+
+    addBtn.onclick = (ev) => {
+      ev.stopPropagation();
+      picker.classList.toggle('open');
+    };
+
+    pickerWrap.appendChild(addBtn);
+    pickerWrap.appendChild(picker);
+    wrap.appendChild(pickerWrap);
+  }
+}
+
+function buildCard(photo) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.id = 'card-' + photo.id;
+
+  const personLabel = photo.person || '';
+  const dateLabel = photo.date || '';
+  const caption = photo.caption || '';
+  const src = photo.src || '';
+
+  card.innerHTML = `
+    <div class="card-header">
+      <span class="card-name">${personLabel}</span>
+      <span class="card-date">${dateLabel}</span>
+    </div>
+    ${caption ? `<p class="card-caption">${caption}</p>` : ''}
+    <img class="card-img" src="${src}" alt="${caption || personLabel}" loading="lazy">
+    <div class="reactions"></div>
+  `;
+
+  // Seed initial reactions from JSON if provided
+  if (photo.reactions) {
+    reactionsData[photo.id] = { ...photo.reactions };
+  }
+
+  renderReactions(photo.id, card);
+  return card;
+}
+
+// Close any open picker when clicking outside
+document.addEventListener('click', () => {
+  document.querySelectorAll('.emoji-picker.open').forEach(p => p.classList.remove('open'));
+});
+
+// Load gallery.json
+fetch('gallery.json')
+  .then(r => r.json())
+  .then(photos => {
+    const feed = document.getElementById('feed');
+    feed.innerHTML = '';
+    if (!photos || photos.length === 0) {
+      feed.innerHTML = '<div class="loading">אין תמונות עדיין</div>';
+      return;
+    }
+    photos.forEach(p => feed.appendChild(buildCard(p)));
+  })
+  .catch(() => {
+    document.getElementById('feed').innerHTML =
+      '<div class="loading">לא נמצא קובץ gallery.json</div>';
+  });
+</script>
+</body>
+</html>
