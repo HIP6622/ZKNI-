@@ -370,6 +370,10 @@ fetch('gallery.json')
       return;
     }
     photos.forEach(p => feed.appendChild(buildCard(p)));
+if (location.hash) {
+  const el = document.querySelector(location.hash);
+  if (el) el.scrollIntoView();
+}
   })
   .catch(() => {
     document.getElementById('feed').innerHTML =
