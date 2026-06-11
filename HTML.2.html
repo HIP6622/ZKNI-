@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הוועד</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;700&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --ink: #1C1A18;
+    --warm-mid: #8C7B6B;
+    --accent: #C07A3A;
+    --divider: #E4DDD4;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    line-height: 1.85;
+    font-size: 17px;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 72px 24px 48px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Heebo', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 6vw, 3.6rem);
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--warm-mid);
+    font-style: italic;
+  }
+
+  .spoon {
+    text-align: center;
+    padding: 28px 0 0;
+    font-size: 28px;
+    opacity: 0.55;
+  }
+
+  .story {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .scene {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  .scene:last-child { border-bottom: none; }
+
+  .scene-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .scene p {
+    margin-bottom: 1.1em;
+    color: #2E2B27;
+  }
+  .scene p:last-child { margin-bottom: 0; }
+
+  strong { font-weight: 500; color: var(--ink); }
+
+  .img-card {
+    margin: 36px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+  }
+
+  .img-card img {
+    width: 100%;
+    display: block;
+    transition: transform 0.45s ease;
+  }
+  .img-card:hover img { transform: scale(1.02); }
+
+  .img-caption {
+    background: #fff;
+    padding: 12px 18px;
+    font-size: 13px;
+    color: var(--warm-mid);
+    font-style: italic;
+    border-top: 1px solid var(--divider);
+  }
+
+  .closing-quote {
+    margin: 48px 0 0;
+    padding: 32px 28px;
+    border-right: 3px solid var(--accent);
+    background: #fff;
+    border-radius: 0 10px 10px 0;
+  }
+
+  .closing-quote p {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 0 !important;
+  }
+
+  .closing-quote cite {
+    display: block;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--warm-mid);
+    font-style: normal;
+    letter-spacing: 0.06em;
+  }
+
+  .silence-block {
+    margin: 36px 0;
+    padding: 40px 28px;
+    background: #fff;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+
+  .silence-block .silence-text {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.4rem;
+    color: var(--ink);
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+
+  .silence-block .silence-sub {
+    font-size: 13px;
+    color: var(--warm-mid);
+    font-style: italic;
+  }
+
+  footer {
+    text-align: center;
+    padding: 32px 24px 48px;
+    font-size: 13px;
+    color: var(--warm-mid);
+    border-top: 1px solid var(--divider);
+  }
+  footer span { font-size: 20px; }
+
+  .nav-back {
+    display: inline-block;
+    margin: 32px 24px 0;
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+  }
+  .nav-back:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<a class="nav-back" href="index.html">← כל הסיפורים</a>
+
+<header class="hero">
+  <p class="hero-eyebrow">סיפורי הישיבה · פרק ב׳</p>
+  <h1>הוועד</h1>
+  <p class="hero-sub">הכל אינטרס. הכל.<br>כולל הוועד הזה.</p>
+  <div class="spoon">🧠</div>
+</header>
+
+<main class="story">
+
+  <section class="scene">
+    <p class="scene-label">הרב ג׳ינג׳י</p>
+    <p>
+      הרב ג׳ינג׳י (המערכת צנזרה את השם שלו) היה מסוג הרבנים שה׳ ברא אותם עם ידיים גדולות וקלילות במיוחד.
+    </p>
+    <p>
+      לא בגלל הגובה — כי היה דווקא נמוך — אלא בגלל ההסברה.
+      כשהוא רצה להסביר משהו קטן, הוא פתח את הידיים כמו שמישהו מסביר גודל של סיר הצ׳ולנט של הישיבה.
+      כשהוא רצה להסביר משהו גדול — היה צריך לוודא שאף אחד לא עומד בצד.
+    </p>
+    <p>
+      בחורים למדו לשבת בשורה האמצעית. לא קדמה מדי, לא אחורה מדי. <strong>הטווח הבטוח.</strong>
+    </p>
+  </section>
+
+  <section class="scene">
+    <p class="scene-label">הוועד</p>
+    <p>
+      אותו יום הוא מסר וועד. נושא הוועד: <strong>האינטרס.</strong>
+    </p>
+
+    <div class="img-card">
+      <img src="https://images.nightcafe.studio/jobs/g8IMw3NEMG9vVe1bTx9e/g8IMw3NEMG9vVe1bTx9e-NYPg0.jpg?tr=w-1600,c-at_max"
+           alt="הרב ג׳ינג׳י מסביר בוועד" loading="lazy">
+      <p class="img-caption">הטווח הבטוח — שורה אמצעית בלבד</p>
+    </div>
+
+    <p>
+      ״חברה,״ פתח הרב ג׳ינג׳י, הידיים כבר באוויר, ״כל מה שאדם עושה — הכל אינטרס. הכל. אין טוב לב. יש רק — מה אני מרוויח מזה.״
+    </p>
+    <p>
+      מישהו בשורה האחורית ניסה להתנגד. ״מה עם אמא שנותנת לילד?״
+    </p>
+    <p>
+      הרב חייך חיוך של מי שחיכה לזה. ״היא מרוויחה תחושת סיפוק. אינטרס רגשי. שאלה הבאה?!״
+    </p>
+    <p>
+      ״מה עם מישהו שקופץ על רימון כדי להציל חברים?״
+    </p>
+    <p>
+      ״אינטרס של גאווה, של משמעות, של לא לחיות עם הבושה שלא עשה. תשאלו את הפסיכולוגים.״ הידיים עשו תנועה שאמרה <em>זה ידוע</em>.
+    </p>
+    <p>
+      הבחורים התחילו להזיע. זה היה הגיוני מדי. מעצבן כמה שזה היה הגיוני.
+    </p>
+    <p>
+      הוועד נמשך שלושים ושש דקות. הרב הביא דוגמאות מהתנ״ך, מסבתא שלו, ומבחור שהוא הכיר פעם בירושלים שתרם כליה — ״תאמינו לי, גם שם יש סיפור.״
+    </p>
+    <p>
+      הכל היה בנוי. הכל היה אטום. הכל היה נכון.
+    </p>
+    <p>
+      הרב הניח את הידיים. סימן שהוועד נגמר.
+    </p>
+  </section>
+
+  <section class="scene">
+    <p class="scene-label">שמחצל</p>
+
+    <div class="img-card">
+      <img src="https://images.nightcafe.studio/jobs/lXHeZ6jtAiLGIX55ye0U/lXHeZ6jtAiLGIX55ye0U-pP0C1.jpg?tr=w-1600,c-at_max"
+           alt="שמחצל עומד ושואל" loading="lazy">
+      <p class="img-caption">החיוך שאומר — אני לא מכעיס אותך, אני רק שואל</p>
+    </div>
+
+    <p>
+      ואז, מהשורה האמצעית, קם שמחצל הציפלון. לאט. בלי בהילות. עם החיוך הזה — זה שאומר <em>אני לא מכעיס אותך, אני רק שואל</em>.
+    </p>
+    <p>
+      ״כבוד הרב,״ אמר שמחצל, ״שאלה אחת קטנה.״
+    </p>
+    <p>
+      הרב הנהן.
+    </p>
+    <p>
+      ״מה האינטרס של הרב בוועד הזה?״
+    </p>
+
+    <div class="silence-block">
+      <p class="silence-text">שתיקה.</p>
+      <p class="silence-sub">לא שתיקת מחשבה. שתיקת חדר שמבין בדיוק מה קרה.</p>
+    </div>
+
+    <p>
+      הלם. הרב ג׳ינג׳י התחיל להזיע.
+      הוא פתח את הפה. סגר אותו. פתח שוב.
+      הידיים — בפעם הראשונה מזה שנים — לא ידעו לאן ללכת.
+    </p>
+    <p>
+      שמחצל ישב בחזרה. לקח לגימה מהמים שלו. ודפק על בטנו בקלות.
+    </p>
+    <p>
+      מישהו בשורה האחורית השמיע קול שהיה אמור להיות שיעול.
+    </p>
+
+    <div class="closing-quote">
+      <p>מאותו יום, הרב ג׳ינג׳י הוסיף תמיד הסתייגות בסוף כל וועד.<br>בחורים קראו לה ״סעיף שמחצל״.</p>
+      <cite>— מסורת צ׳יבצ׳ר</cite>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>🥄</span><br><br>
+  סיפורי הישיבה · מסורת צ׳יבצ׳ר · כל הזכויות שמורות לקיבה
+</footer>
+
+</body>
+</html>
