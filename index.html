@@ -6,131 +6,178 @@
 <title>סיפורי הישיבה</title>
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;700&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #FAF7F2;
+  --ink: #1C1A18;
+  --warm-mid: #8C7B6B;
+  --accent: #C07A3A;
+  --divider: #E4DDD4;
+}
 
-  :root {
-    --cream: #FAF7F2;
-    --ink: #1C1A18;
-    --warm-mid: #8C7B6B;
-    --accent: #C07A3A;
-    --divider: #E4DDD4;
-  }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
 
-  body {
-    background: var(--cream);
-    color: var(--ink);
-    font-family: 'Heebo', sans-serif;
-    font-weight: 300;
-    line-height: 1.85;
-    font-size: 17px;
-  }
+/* ─── Top bar (always visible) ─── */
+#topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px;
+  height: 52px;
+  min-height: 52px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--divider);
+  z-index: 10;
+}
 
-  .hero {
-    text-align: center;
-    padding: 72px 24px 48px;
-    border-bottom: 1px solid var(--divider);
-  }
+#back-btn {
+  display: none; /* hidden on home screen */
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px 7px 12px;
+  background: transparent;
+  border: 1.5px solid var(--accent);
+  border-radius: 6px;
+  color: var(--accent);
+  font-family: 'Heebo', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+#back-btn:hover {
+  background: var(--accent);
+  color: var(--cream);
+}
+#back-btn svg {
+  flex-shrink: 0;
+}
 
-  .hero-eyebrow {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 20px;
-  }
+#topbar-title {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  flex: 1;
+  text-align: center;
+}
 
-  .hero h1 {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-weight: 700;
-    font-size: clamp(2rem, 6vw, 3.2rem);
-    line-height: 1.2;
-    margin-bottom: 12px;
-  }
+/* nav links on the left */
+#topbar-nav {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+#topbar-nav a {
+  font-size: 13px;
+  color: var(--warm-mid);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+#topbar-nav a:hover,
+#topbar-nav a.active {
+  color: var(--accent);
+}
 
-  .hero-sub {
-    font-size: 15px;
-    color: var(--warm-mid);
-    font-style: italic;
-  }
+/* ─── Main content area ─── */
+#frame-wrap {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
 
-  .list {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 0 24px 80px;
-  }
-
-  .article-link {
-    display: block;
-    padding: 32px 0;
-    border-bottom: 1px solid var(--divider);
-    text-decoration: none;
-    color: inherit;
-  }
-  .article-link:last-child { border-bottom: none; }
-  .article-link:hover .article-title { color: var(--accent); }
-
-  .article-num {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 8px;
-  }
-
-  .article-title {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    transition: color 0.2s;
-  }
-
-  .article-desc {
-    font-size: 15px;
-    color: var(--warm-mid);
-    font-style: italic;
-  }
-
-  footer {
-    text-align: center;
-    padding: 32px 24px 48px;
-    font-size: 13px;
-    color: var(--warm-mid);
-    border-top: 1px solid var(--divider);
-  }
+#main-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <p class="hero-eyebrow">מנהגי הצ׳יבצ׳ר</p>
-  <h1>סיפורים מהישיבה</h1>
-  <p class="hero-sub">כל הסיפורים, לפי סדר</p>
-</header>
+<div id="topbar">
+  <!-- Back button — shown only when inside an article -->
+  <button id="back-btn" onclick="goHome()" title="חזרה לדף הבית (Backspace)">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    כל הסיפורים
+  </button>
 
-<main class="list" id="list"></main>
+  <div id="topbar-title">סיפורי הישיבה</div>
 
-<footer>
-  סיפורי הישיבה · כל הזכויות שמורות לקיבה
-</footer>
+  <nav id="topbar-nav">
+    <a href="#" id="nav-home" class="active" onclick="goHome(); return false;">סיפורים</a>
+    <a href="#" id="nav-gallery" onclick="goGallery(); return false;">גלריה</a>
+  </nav>
+</div>
+
+<div id="frame-wrap">
+  <iframe id="main-frame" src="home.html" title="תוכן ראשי"></iframe>
+</div>
 
 <script>
-  fetch('articles.json')
-    .then(r => r.json())
-    .then(articles => {
-      const list = document.getElementById('list');
-      articles.forEach(a => {
-        list.innerHTML += `
-          <a class="article-link" href="${a.file}">
-            <p class="article-num">פרק ${a.num}</p>
-            <p class="article-title">${a.title}</p>
-            <p class="article-desc">${a.desc}</p>
-          </a>`;
-      });
-    });
-</script>
+const frame = document.getElementById('main-frame');
+const backBtn = document.getElementById('back-btn');
+const navHome = document.getElementById('nav-home');
+const navGallery = document.getElementById('nav-gallery');
 
+const HOME = 'home.html';
+const GALLERY = 'gallery.html';
+
+function setBack(show) {
+  backBtn.style.display = show ? 'flex' : 'none';
+}
+
+function goHome() {
+  frame.src = HOME;
+}
+
+function goGallery() {
+  frame.src = GALLERY;
+}
+
+// Track iframe navigation
+frame.addEventListener('load', () => {
+  try {
+    const src = frame.contentWindow.location.href;
+    const isHome = src.includes(HOME) || src.endsWith('/');
+    const isGallery = src.includes(GALLERY);
+    const isArticle = !isHome && !isGallery;
+
+    setBack(isArticle);
+    navHome.classList.toggle('active', isHome);
+    navGallery.classList.toggle('active', isGallery);
+  } catch (e) {
+    // cross-origin guard
+  }
+});
+
+// Keyboard: Backspace goes back when not in a text field
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Backspace' || e.key === 'ArrowLeft') {
+    const tag = document.activeElement.tagName;
+    if (tag !== 'INPUT' && tag !== 'TEXTAREA') {
+      if (backBtn.style.display !== 'none') {
+        e.preventDefault();
+        goHome();
+      }
+    }
+  }
+});
+</script>
 </body>
 </html>
