@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>סיפורי הישיבה</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;700&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --ink: #1C1A18;
+    --warm-mid: #8C7B6B;
+    --accent: #C07A3A;
+    --divider: #E4DDD4;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    line-height: 1.85;
+    font-size: 17px;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 72px 24px 48px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--warm-mid);
+    font-style: italic;
+  }
+
+  .list {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .article-link {
+    display: block;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--divider);
+    text-decoration: none;
+    color: inherit;
+  }
+  .article-link:last-child { border-bottom: none; }
+  .article-link:hover .article-title { color: var(--accent); }
+
+  .article-num {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .article-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+
+  .article-desc {
+    font-size: 15px;
+    color: var(--warm-mid);
+    font-style: italic;
+  }
+
+  footer {
+    text-align: center;
+    padding: 32px 24px 48px;
+    font-size: 13px;
+    color: var(--warm-mid);
+    border-top: 1px solid var(--divider);
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="hero-eyebrow">מסורת צ׳יבצ׳ר</p>
+  <h1>סיפורי הישיבה</h1>
+  <p class="hero-sub">כל הסיפורים, לפי סדר</p>
+</header>
+
+<main class="list" id="list"></main>
+
+<footer>
+  סיפורי הישיבה · כל הזכויות שמורות לקיבה
+</footer>
+
+<script>
+  fetch('articles.json')
+    .then(r => r.json())
+    .then(articles => {
+      const list = document.getElementById('list');
+      articles.forEach(a => {
+        list.innerHTML += `
+          <a class="article-link" href="${a.file}">
+            <p class="article-num">פרק ${a.num}</p>
+            <p class="article-title">${a.title}</p>
+            <p class="article-desc">${a.desc}</p>
+          </a>`;
+      });
+    });
+</script>
+
+</body>
+</html>
