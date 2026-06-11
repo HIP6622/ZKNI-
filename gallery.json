@@ -1,0 +1,26 @@
+[
+  {
+    "id": "photo-1",
+    "person": "קאפל",
+    "date": "קיץ תשפ״ג",
+    "caption": "ביציאה מהישיבה אחרי שיעור ארוך",
+    "src": "photos/kapl-1.jpg",
+    "reactions": { "❤️": 3, "😂": 1 }
+  },
+  {
+    "id": "photo-2",
+    "person": "זלמן",
+    "date": "פורים תשפ״ד",
+    "caption": "פורים בישיבה — הגיע בתחפושת של הרב",
+    "src": "photos/zalman-1.jpg",
+    "reactions": { "😂": 5, "🔥": 2 }
+  },
+  {
+    "id": "photo-3",
+    "person": "שמחצל",
+    "date": "סוכות תשפ״ג",
+    "caption": "בנה לבד את הסוכה הכי גדולה בחצר",
+    "src": "photos/shmachtzel-1.jpg",
+    "reactions": { "👏": 4 }
+  }
+]
